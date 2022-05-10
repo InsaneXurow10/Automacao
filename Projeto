@@ -1,0 +1,125 @@
+# recomendado utilizar o Jupyter para rodar o código ( o código está inteiro formatado para o Jupyter )
+# caso ainda não possua, será necessário instalar ao menos uma vez as duas bibliotecas 
+
+# no final do código há orientações para tudo que é relativo ao usuário, ou seja, que pode mudar dependendo de quem ou onde utiliza o código. Estas são as linhas comentadas, ou seja, que possuem um # no início 
+# Lembrete: as linhas comentadas são ignoradas pelo programa, então você precisa tirar o # do início de todas as linhas que vai usar
+
+# !pip install pyautogui
+# !pip install pyperclip
+
+
+import pyautogui
+import pyperclip
+import time
+import pandas as pd
+
+pyautogui.PAUSE = 1
+
+pyautogui.press("win")
+pyautogui.write("chrome")
+pyautogui.press("enter")
+
+time.sleep(2)
+
+pyperclip.copy("") # link para a busca de dados
+pyautogui.hotkey("ctrl", "v")
+pyautogui.press("enter")
+
+time.sleep(5)
+
+# dentro da plataforma do link, caso seja necessário um login com senha, siga o Caso 1, se o caso exigir apenas um click (ou duplo click) na tela, siga o Caso 2
+
+# Caso 1
+
+# pyautogui.click() # se necessário clicar em uma caixa de texto para digitar
+# pyperclip.copy("") # login, seja um email ou apenas um nome
+# pyautogui.hotkey("ctrl", "v")
+# pyautogui.press("tab")
+# pyperclip.copy("") # senha do login
+# pyautogui.hotkey("ctrl", "v")
+# pyautogui.press("tab")
+# pyautogui.press("enter")
+
+# time.sleep(5)
+
+# Caso 2
+
+# pyautogui.click() # click para encontrar os dados no link
+
+# time.sleep(3)
+
+# pyautogui.click()
+# pyautogui.click()
+
+time.sleep(10)
+
+
+
+
+
+
+tabela = pd.read_excel(r"C:\Users\logonrmlocal\Downloads\Vendas - Dez.xlsx")
+
+faturamento = tabela["Valor Final"].sum()
+
+quantidade = tabela["Quantidade"].sum()
+
+print(faturamento)
+print(quantidade)
+
+
+
+
+
+
+pyautogui.hotkey("ctrl", "t")
+pyperclip.copy("https://mail.google.com/mail/u/0/?ogbl#inbox")
+pyautogui.hotkey("ctrl", "v")
+pyautogui.press("enter")
+
+time.sleep(5)
+
+pyperclip.copy("rapaizik@gmail.com")
+pyautogui.hotkey("ctrl", "v")
+pyautogui.press("enter")
+
+time.sleep(3)
+
+pyperclip.copy("R4p41z1k")
+pyautogui.hotkey("ctrl", "v")
+pyautogui.press("enter")
+
+time.sleep(10)
+
+pyautogui.click(x=119, y=172)
+pyautogui.write("rapaizik@gmail.com")
+pyautogui.press("tab")
+pyautogui.press("tab")
+pyperclip.copy("Relatório de Vendas")
+pyautogui.hotkey("ctrl", "v")
+pyautogui.press("tab")
+
+texto = f"""
+Prezados, bom dia
+
+O faturamento foi de: R${faturamento:,.2f}
+A quantidade de produtos foi de: {quantidade:,}
+
+Abs,
+Gabriel
+"""
+
+pyperclip.copy(texto)
+pyautogui.hotkey("ctrl", "v")
+pyautogui.hotkey("ctrl", "enter")
+
+
+
+
+
+
+# Orientações 
+
+# sem exceção, em todas as linhas que possuem o código pyautogui.click(), ou seja a função para clicar na tela, dependem de uma indicação de onde clicar na tela, e isso pode ter variações dependendo do seu caso. Então, para que isso funcione independentemente, você terá que usar os códigos das duas linhas abaixo. Para usá-los você deve colocá-los separados do resto do código, crie uma célula de código diferente e as coloque lá. Quando você rodar esta célula, a função pyautogui.position() vai dar a posição que o seu mouse/cursor está, no formato (x=numero, y=numero), a função time.sleep(5) vai atrasar em 5 segundos o código, ou seja, vai dar 5 segundos para você posicionar o seu cursor no lugar onde você pretende descobrir sua posição. Caso queira você pode alterar este tempo.  
+# time.sleep(5)
+# pyautogui.position
